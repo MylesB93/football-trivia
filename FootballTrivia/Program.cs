@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using FootballTrivia.Data;
+using FootballTrivia.Areas.Identity.Data;
 namespace FootballTrivia
 {
 	public class Program
