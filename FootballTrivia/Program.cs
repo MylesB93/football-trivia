@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using FootballTrivia.Data;
 namespace FootballTrivia
 {
 	public class Program
@@ -5,6 +8,11 @@ namespace FootballTrivia
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+   var connectionString = builder.Configuration.GetConnectionString("FootballTriviaContextConnection") ?? throw new InvalidOperationException("Connection string 'FootballTriviaContextConnection' not found.");
+
+   builder.Services.AddDbContext<FootballTriviaContext>(options => options.UseSqlServer(connectionString));
+
+   builder.Services.AddDefaultIdentity<FootballTriviaUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FootballTriviaContext>();
 
 			// Add services to the container.
 			builder.Services.AddRazorPages();
