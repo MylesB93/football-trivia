@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using FootballTrivia.Data;
 using FootballTrivia.Areas.Identity.Data;
+using FootballTrivia.Email;
+using Microsoft.AspNetCore.Identity.UI.Services;
 namespace FootballTrivia
 {
 	public class Program
@@ -18,7 +20,10 @@ namespace FootballTrivia
 			// Add services to the container.
 			builder.Services.AddRazorPages();
 
-			var app = builder.Build();
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
+            builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())
