@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.begin-quiz-link {
+    text-decoration: none;
+}

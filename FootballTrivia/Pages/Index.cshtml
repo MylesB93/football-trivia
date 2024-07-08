@@ -7,4 +7,12 @@
 <div class="text-center">
     <h1 class="display-4">Football Trivia</h1>
     <p>Are you ready to test your football knowledge?</p>
+    @if (User?.Identity?.IsAuthenticated == true)
+    {
+        <a class="begin-quiz-link" href=""><h2>Begin Quiz!</h2></a>
+    }
+    else
+    {
+        <p>Log in to begin the quiz!</p>
+    }
 </div>
