@@ -1,4 +1,23 @@
 ﻿@page
 @model IndexModel
 @{
+	Dictionary<string, string> questions = new Dictionary<string, string>
+	{
+		{ "How old is Neymar?", "29" },
+		{ "Who is the all the time leading Premier League goal scorer?", "Alan Shearer" },
+		{ "Who does Harry Kane play for?", "Bayern Munchen" }
+	};
+
+	var jsonString = @Html.Raw(JsonSerializer.Serialize(questions));
+	var currentQuestion = 0;
 }
+
+<ul>
+	<li class="js-question"></li>
+</ul>
+
+<script>
+	console.log(@jsonString)
+	@{currentQuestion++;}
+	console.log($"Current Question Number:{@currentQuestion}")
+</script>
