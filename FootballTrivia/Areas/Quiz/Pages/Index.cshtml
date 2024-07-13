@@ -5,10 +5,10 @@
 	{
 		{ "How old is Neymar?", "29" },
 		{ "Who is the all the time leading Premier League goal scorer?", "Alan Shearer" },
-		{ "Who does Harry Kane play for?", "Bayern Munchen" }
+		{ "Who does Harry Kane play for?", "Bayern Munchen" },
 	};
 
-	var jsonString = @Html.Raw(JsonSerializer.Serialize(questions));
+	var jsonString = JsonSerializer.Serialize(questions);
 	var currentQuestion = 0;
 }
 
@@ -17,7 +17,9 @@
 </ul>
 
 <script>
-	console.log(@jsonString)
+	var questions = @Html.Raw(jsonString)
+	console.log(questions)
+
 	@{currentQuestion++;}
-	console.log($"Current Question Number:{@currentQuestion}")
+	console.log(@currentQuestion)
 </script>
