@@ -12,14 +12,19 @@
 	var currentQuestion = 0;
 }
 
-<ul>
-	<li class="js-question"></li>
-</ul>
+<div class="question-block">
+	<p id="question"></p>
+	<p id="answer"></p> <!--TODO: Remember to hide this using display:none-->
+</div>
 
 <script>
-	var questions = @Html.Raw(jsonString)
+	var questions = Object.entries(@Html.Raw(jsonString))
 	console.log(questions)
 
 	@{currentQuestion++;}
 	console.log(@currentQuestion)
+	console.log(questions[@currentQuestion])
+	
+	document.getElementById('question').innerHTML = questions[@currentQuestion][0]
+	document.getElementById('answer').innerHTML = questions[@currentQuestion][1]
 </script>
