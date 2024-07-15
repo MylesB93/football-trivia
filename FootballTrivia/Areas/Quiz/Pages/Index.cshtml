@@ -1,11 +1,11 @@
 ﻿@page
 @model IndexModel
 @{
-	Dictionary<string, string> questions = new Dictionary<string, string>
+	Dictionary<string, string[]> questions = new Dictionary<string, string[]> // The first item in the string array is the correct answer
 	{
-		{ "How old is Neymar?", "29" },
-		{ "Who is the all the time leading Premier League goal scorer?", "Alan Shearer" },
-		{ "Who does Harry Kane play for?", "Bayern Munchen" },
+		{ "How old is Neymar?", ["32", "27", "31"] },
+		{ "Who is the all the time leading Premier League goal scorer?", ["Alan Shearer", "Michael Owen", "Wayne Rooney"] },
+		{ "Who does Harry Kane play for?", ["Bayern Munchen", "Tottenham Hotspur", "Leicester City"] },
 	};
 
 	var jsonString = JsonSerializer.Serialize(questions);
@@ -15,6 +15,9 @@
 <div class="question-block text-center">
 	<p id="question"></p>
 	<p id="answer"></p> <!--TODO: Remember to hide this using display:none-->
+	<button type="button" class="btn btn-primary" id="answer-0"></button>
+	<button type="button" class="btn btn-primary" id="answer-1"></button>
+	<button type="button" class="btn btn-primary" id="answer-2"></button>
 </div>
 
 <script>
@@ -27,4 +30,14 @@
 	
 	document.getElementById('question').innerHTML = questions[@currentQuestion][0]
 	document.getElementById('answer').innerHTML = questions[@currentQuestion][1]
+
+	var correctAnswer = questions[@currentQuestion][1][0]
+	console.log(`CORRECT ANSWER: ${correctAnswer}`)
+	var answers = questions[@currentQuestion][1]
+	var randomisedAnswers = answers.sort(() => Math.random() - 0.5)
+	console.log(`RANDOMISED ANSWERS: ${randomisedAnswers}`)
+
+	document.getElementById('answer-0').innerHTML = randomisedAnswers[0]
+	document.getElementById('answer-1').innerHTML = randomisedAnswers[1]
+	document.getElementById('answer-2').innerHTML = randomisedAnswers[2]
 </script>

@@ -24,3 +24,7 @@ body {
 .begin-quiz-link {
     text-decoration: none;
 }
+
+#answer {
+    display: none;
+}
