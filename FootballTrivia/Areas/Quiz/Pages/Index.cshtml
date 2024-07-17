@@ -15,16 +15,16 @@
 <div class="question-block text-center">
 	<p id="question"></p>
 	<p id="answer"></p> <!--TODO: Remember to hide this using display:none-->
-	<button type="button" class="btn btn-primary" id="answer-0"></button>
-	<button type="button" class="btn btn-primary" id="answer-1"></button>
-	<button type="button" class="btn btn-primary" id="answer-2"></button>
+	<button type="button" class="btn btn-primary" id="answer-0" onclick="checkAnswer(this)"></button>
+	<button type="button" class="btn btn-primary" id="answer-1" onclick="checkAnswer(this)"></button>
+	<button type="button" class="btn btn-primary" id="answer-2" onclick="checkAnswer(this)"></button>
 </div>
 
 <script>
+	window.questions = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(questions));
 	var questions = Object.entries(@Html.Raw(jsonString))
 	console.log(questions)
 
-	@{currentQuestion++;}
 	console.log(@currentQuestion)
 	console.log(questions[@currentQuestion])
 	
@@ -40,4 +40,14 @@
 	document.getElementById('answer-0').innerHTML = randomisedAnswers[0]
 	document.getElementById('answer-1').innerHTML = randomisedAnswers[1]
 	document.getElementById('answer-2').innerHTML = randomisedAnswers[2]
+
+	function checkAnswer(element) {
+		console.log(element.innerHTML)
+		var answer = element.innerHTML
+		if (answer == correctAnswer) {
+			alert("CORRECT!!!!!")
+		} else {
+			alert("INCORRECT!!!!!")
+		}
+	}
 </script>
