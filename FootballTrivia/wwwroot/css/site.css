@@ -28,3 +28,9 @@ body {
 #answer {
     display: none;
 }
+
+#answer-check {
+    display: none;
+    margin-top: 1%;
+    font-weight: bold;
+}

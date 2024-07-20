@@ -13,11 +13,17 @@ document.getElementById('answer-1').innerHTML = randomisedAnswers[1]
 document.getElementById('answer-2').innerHTML = randomisedAnswers[2]
 
 function checkAnswer(element) {
-	console.log(element.innerHTML)
+	var answerCheck = document.getElementById('answer-check')
+	var green = '#12c712'
+	var red = '#ff0000'
+	
 	var answer = element.innerHTML
 	if (answer == correctAnswer) {
-		alert("CORRECT!!!!!")
+		answerCheck.innerHTML = "That's correct!"
+		answerCheck.style.color = green
 	} else {
-		alert("INCORRECT!!!!!")
+		answerCheck.innerHTML = "That's incorrect!"
+		answerCheck.style.color = red
 	}
+	answerCheck.style.display = 'block'
 }
