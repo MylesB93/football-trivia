@@ -32,7 +32,6 @@ function checkAnswer(element) {
 	}
 	answerCheck.style.display = 'block'
 	isCorrect(elemList)
-	// TODO: Disable other buttons so user can't change answer
 }
 
 function isCorrect(elementList) {

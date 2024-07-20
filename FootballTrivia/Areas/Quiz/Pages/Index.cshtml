@@ -1,12 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-	Dictionary<string, string[]> questions = new Dictionary<string, string[]> // The first item in the string array is the correct answer
-	{
-		{ "How old is Neymar?", ["32", "27", "31"] },
-		{ "Who is the all the time leading Premier League goal scorer?", ["Alan Shearer", "Michael Owen", "Wayne Rooney"] },
-		{ "Who does Harry Kane play for?", ["Bayern Munchen", "Tottenham Hotspur", "Leicester City"] },
-	};
+	var questions = Model.Questions;
 
 	var jsonString = JsonSerializer.Serialize(questions);
 }
