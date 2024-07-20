@@ -2,7 +2,6 @@
 var currentQuestion = 0;
 
 document.getElementById('question').innerHTML = questions[currentQuestion][0]
-document.getElementById('answer').innerHTML = questions[currentQuestion][1]
 
 var correctAnswer = questions[currentQuestion][1][0]
 var answers = questions[currentQuestion][1]
@@ -39,6 +38,7 @@ function checkAnswer(element) {
 function isCorrect(elementList) {
 	elementList.forEach(element => {
 		element.classList.remove('btn-primary')
+		element.onclick = null
 		if (correctAnswer == element.innerHTML) {
 			element.classList.add('btn-success')
 		} else {
