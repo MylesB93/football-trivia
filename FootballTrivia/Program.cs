@@ -1,9 +1,11 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using FootballTrivia.Data;
 using FootballTrivia.Areas.Identity.Data;
 using FootballTrivia.Email;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using FootballTrivia.Interfaces;
+using FootballTrivia.Services;
+
 namespace FootballTrivia
 {
 	public class Program
@@ -22,6 +24,8 @@ namespace FootballTrivia
 
             builder.Services.AddTransient<IEmailSender, EmailSender>();
             builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+
+			builder.Services.AddScoped<IQuizService, QuizService>();
 
             var app = builder.Build();
 
