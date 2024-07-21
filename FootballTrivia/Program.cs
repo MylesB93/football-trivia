@@ -22,6 +22,13 @@ namespace FootballTrivia
 			// Add services to the container.
 			builder.Services.AddRazorPages();
 
+			var FootballDataConfiguration = new ConfigurationBuilder()
+				.SetBasePath(Directory.GetCurrentDirectory())
+				.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+				.AddUserSecrets<Program>()
+				.Build();
+			builder.Services.Configure<FootballDataConfiguration>(FootballDataConfiguration.GetSection("FootballDataConfiguration"));
+
             builder.Services.AddTransient<IEmailSender, EmailSender>();
             builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
