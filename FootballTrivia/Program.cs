@@ -34,6 +34,12 @@ namespace FootballTrivia
 
 			builder.Services.AddScoped<IQuizService, QuizService>();
 
+			builder.Services.AddHttpClient("FootballData", httpClient =>
+			{
+				httpClient.BaseAddress = new Uri("https://api-football-v1.p.rapidapi.com/v3/");
+				httpClient.DefaultRequestHeaders.Add("x-rapidapi-host", "api-football-v1.p.rapidapi.com");
+			});
+
             var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -53,7 +59,7 @@ namespace FootballTrivia
 
 			app.MapRazorPages();
 
-			app.Run();
+			app.Run();{
 		}
 	}
 }

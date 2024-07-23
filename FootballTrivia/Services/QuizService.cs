@@ -6,15 +6,21 @@ namespace FootballTrivia.Services
 	public class QuizService : IQuizService
 	{
 		private readonly IOptions<FootballDataConfiguration> _footballDataConfig;
+		private readonly IHttpClientFactory _httpClientFactory;
 
-		public QuizService(IOptions<FootballDataConfiguration> footballDataConfiguration)
+		public QuizService(IOptions<FootballDataConfiguration> footballDataConfiguration, IHttpClientFactory httpClientFactory)
 		{
 			_footballDataConfig = footballDataConfiguration;
+			_httpClientFactory = httpClientFactory;
 		}
 
 		public Dictionary<string, string[]> GetQuizQuestions()
 		{
 			var apiKey = _footballDataConfig.Value.FootballAPIKey;
+
+			var client = _httpClientFactory.CreateClient("FootballData");
+			client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
+
 			return new Dictionary<string, string[]>
 			{
 				{ "How old is Neymar?", ["32", "27", "31"] },
