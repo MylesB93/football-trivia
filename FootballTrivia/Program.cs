@@ -59,7 +59,7 @@ namespace FootballTrivia
 
 			app.MapRazorPages();
 
-			app.Run();{
+			app.Run();
 		}
 	}
 }
