@@ -14,12 +14,16 @@ namespace FootballTrivia.Services
 			_httpClientFactory = httpClientFactory;
 		}
 
-		public Dictionary<string, string[]> GetQuizQuestions()
+		public async Task<Dictionary<string, string[]>> GetQuizQuestionsAsync()
 		{
 			var apiKey = _footballDataConfig.Value.FootballAPIKey;
 
 			var client = _httpClientFactory.CreateClient("FootballData");
 			client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
+
+			var response = await client.GetAsync("/v3/standings?league=39&season=2023");
+
+
 
 			return new Dictionary<string, string[]>
 			{

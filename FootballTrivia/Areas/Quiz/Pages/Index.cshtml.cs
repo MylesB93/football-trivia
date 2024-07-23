@@ -16,9 +16,9 @@ namespace FootballTrivia.Areas.Quiz.Pages
 			_quizService = quizService;
 		}
 
-		public void OnGet()
+		public async Task OnGetAsync()
 		{
-			Questions = _quizService.GetQuizQuestions();
+			Questions = await _quizService.GetQuizQuestionsAsync();
 		}
 	}
 }

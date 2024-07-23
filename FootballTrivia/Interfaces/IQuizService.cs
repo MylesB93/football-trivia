@@ -2,6 +2,6 @@
 {
 	public interface IQuizService
 	{
-		Dictionary<string, string[]> GetQuizQuestions();
+		Task<Dictionary<string, string[]>> GetQuizQuestionsAsync();
 	}
 }
