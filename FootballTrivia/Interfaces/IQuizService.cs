@@ -2,6 +2,6 @@
 {
 	public interface IQuizService
 	{
-		Task<Dictionary<string, string[]>> GetQuizQuestionsAsync();
+		Task<Dictionary<string, string[]>> GetQuizQuestionsAsync(string season = "2023");
 	}
 }

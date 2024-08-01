@@ -18,7 +18,7 @@ namespace FootballTrivia.Areas.Quiz.Pages
 
 		public async Task OnGetAsync()
 		{
-			Questions = await _quizService.GetQuizQuestionsAsync();
+			Questions = await _quizService.GetQuizQuestionsAsync(); // TODO: Player should pass season year to this method
 		}
 	}
 }

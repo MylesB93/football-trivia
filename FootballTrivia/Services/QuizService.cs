@@ -1,5 +1,7 @@
 ﻿using FootballTrivia.Interfaces;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using FootballTrivia.Models;
 
 namespace FootballTrivia.Services
 {
@@ -14,17 +16,18 @@ namespace FootballTrivia.Services
 			_httpClientFactory = httpClientFactory;
 		}
 
-		public async Task<Dictionary<string, string[]>> GetQuizQuestionsAsync()
+		public async Task<Dictionary<string, string[]>> GetQuizQuestionsAsync(string season = "2023")
 		{
 			var apiKey = _footballDataConfig.Value.FootballAPIKey;
 
 			var client = _httpClientFactory.CreateClient("FootballData");
 			client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
 
-			var response = await client.GetAsync("/v3/standings?league=39&season=2023");
+			var response = await client.GetAsync($"/v3/standings?league=39&season={2023}");
+			var content = await response.Content.ReadAsStringAsync();
+			var standings = JsonConvert.DeserializeObject<Rootobject>(content);
 
-
-
+			//dummy questions
 			return new Dictionary<string, string[]>
 			{
 				{ "How old is Neymar?", ["32", "27", "31"] },
