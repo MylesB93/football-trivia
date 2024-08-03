@@ -35,5 +35,10 @@ namespace FootballTrivia.Services
 				{ "Who does Harry Kane play for?", ["Bayern Munchen", "Tottenham Hotspur", "Leicester City"] },
 			};
 		}
-	}
+
+		public Task GetSpeedRoundQuestionsAsync(string season = "2023")
+		{
+			return Task.CompletedTask;
+		}
+    }
 }
