@@ -23,9 +23,9 @@ namespace FootballTrivia.Services
 			var client = _httpClientFactory.CreateClient("FootballData");
 			client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
 
-			var response = await client.GetAsync($"/v3/standings?league=39&season={2023}");
+			var response = await client.GetAsync($"/v3/standings?league=39&season={season}");
 			var content = await response.Content.ReadAsStringAsync();
-			var standings = JsonConvert.DeserializeObject<Rootobject>(content);
+			var standings = JsonConvert.DeserializeObject<Rootobject>(content)?.Response?.FirstOrDefault()?.League?.Standings;
 
 			//dummy questions
 			return new Dictionary<string, string[]>
