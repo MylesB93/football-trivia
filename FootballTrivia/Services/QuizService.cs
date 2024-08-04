@@ -20,6 +20,7 @@ namespace FootballTrivia.Services
 		{
 			var apiKey = _footballDataConfig.Value.FootballAPIKey;
 
+			// TODO: Define headers in startup
 			var client = _httpClientFactory.CreateClient("FootballData");
 			client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
 
@@ -36,9 +37,19 @@ namespace FootballTrivia.Services
 			};
 		}
 
-		public Task GetSpeedRoundQuestionsAsync(string season = "2023")
+		public async Task<Standing[][]?> GetSpeedRoundQuestionsAsync(string season = "2023")
 		{
-			return Task.CompletedTask;
+            var apiKey = _footballDataConfig.Value.FootballAPIKey;
+
+            // TODO: Define headers in startup
+            var client = _httpClientFactory.CreateClient("FootballData");
+            client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
+
+            var response = await client.GetAsync($"/v3/standings?league=39&season={season}");
+            var content = await response.Content.ReadAsStringAsync();
+            var standings = JsonConvert.DeserializeObject<Rootobject>(content)?.Response?.FirstOrDefault()?.League?.Standings;
+
+            return standings;
 		}
     }
 }

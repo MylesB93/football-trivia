@@ -1,4 +1,5 @@
 using FootballTrivia.Interfaces;
+using FootballTrivia.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -8,6 +9,8 @@ namespace FootballTrivia.Areas.SpeedRound.Pages
     {
         private readonly IQuizService _quizService;
 
+        public Standing[][]? Standings;
+
         public IndexModel(IQuizService quizService)
         {
             _quizService = quizService;
@@ -15,7 +18,7 @@ namespace FootballTrivia.Areas.SpeedRound.Pages
 
         public async Task OnGetAsync()
         {
-            await _quizService.GetSpeedRoundQuestionsAsync();
+            Standings = await _quizService.GetSpeedRoundQuestionsAsync();
         }
     }
 }
