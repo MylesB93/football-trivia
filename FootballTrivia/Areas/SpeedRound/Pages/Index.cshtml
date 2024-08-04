@@ -2,3 +2,12 @@
 @model FootballTrivia.Areas.SpeedRound.Pages.IndexModel
 @{
 }
+
+<div>
+	<ul>
+		@for(var standing = 0; standing < Model.Standings.Length; standing++)
+		{
+			<li>@Model.Standings[standing].Team.Name - @Model.Standings[standing].Points</li>
+		}
+	</ul>
+</div>
