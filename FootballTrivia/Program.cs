@@ -38,6 +38,7 @@ namespace FootballTrivia
 			{
 				httpClient.BaseAddress = new Uri("https://api-football-v1.p.rapidapi.com/v3/");
 				httpClient.DefaultRequestHeaders.Add("x-rapidapi-host", "api-football-v1.p.rapidapi.com");
+				httpClient.DefaultRequestHeaders.Add("x-rapidapi-key", builder.Configuration["FootballDataConfiguration:FootballAPIKey"]);
 			});
 
             var app = builder.Build();

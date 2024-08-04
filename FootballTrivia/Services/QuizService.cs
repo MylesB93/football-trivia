@@ -9,22 +9,18 @@ namespace FootballTrivia.Services
 	{
 		private readonly IOptions<FootballDataConfiguration> _footballDataConfig;
 		private readonly IHttpClientFactory _httpClientFactory;
+		private readonly HttpClient _httpClient;
 
 		public QuizService(IOptions<FootballDataConfiguration> footballDataConfiguration, IHttpClientFactory httpClientFactory)
 		{
 			_footballDataConfig = footballDataConfiguration;
 			_httpClientFactory = httpClientFactory;
-		}
+            _httpClient = _httpClientFactory.CreateClient("FootballData");
+        }
 
 		public async Task<Dictionary<string, string[]>> GetQuizQuestionsAsync(string season = "2023")
 		{
-			var apiKey = _footballDataConfig.Value.FootballAPIKey;
-
-			// TODO: Define headers in startup
-			var client = _httpClientFactory.CreateClient("FootballData");
-			client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
-
-			var response = await client.GetAsync($"/v3/standings?league=39&season={season}");
+			var response = await _httpClient.GetAsync($"/v3/standings?league=39&season={season}");
 			var content = await response.Content.ReadAsStringAsync();
 			var standings = JsonConvert.DeserializeObject<Rootobject>(content)?.Response?.FirstOrDefault()?.League?.Standings;
 
@@ -39,13 +35,7 @@ namespace FootballTrivia.Services
 
 		public async Task<Standing[][]?> GetSpeedRoundQuestionsAsync(string season = "2023")
 		{
-            var apiKey = _footballDataConfig.Value.FootballAPIKey;
-
-            // TODO: Define headers in startup
-            var client = _httpClientFactory.CreateClient("FootballData");
-            client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
-
-            var response = await client.GetAsync($"/v3/standings?league=39&season={season}");
+            var response = await _httpClient.GetAsync($"/v3/standings?league=39&season={season}");
             var content = await response.Content.ReadAsStringAsync();
             var standings = JsonConvert.DeserializeObject<Rootobject>(content)?.Response?.FirstOrDefault()?.League?.Standings;
 
