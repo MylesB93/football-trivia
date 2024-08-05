@@ -9,7 +9,7 @@ namespace FootballTrivia.Areas.SpeedRound.Pages
     {
         private readonly IQuizService _quizService;
 
-        public Standing[]? Standings;
+        public List<string>? Standings;
 
         public IndexModel(IQuizService quizService)
         {
