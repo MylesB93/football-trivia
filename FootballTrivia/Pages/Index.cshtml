@@ -9,7 +9,7 @@
     <p>Are you ready to test your football knowledge?</p>
     @if (User?.Identity?.IsAuthenticated == true)
     {
-        <a asp-area="Quiz" asp-page="/Index" class="begin-quiz-link"><h2>Begin Quiz!</h2></a>
+        @* <a asp-area="Quiz" asp-page="/Index" class="begin-quiz-link"><h2>Begin Quiz!</h2></a> *@
         <a asp-area="SpeedRound" asp-page="/Index" class="begin-quiz-link"><h2>Begin Speed Round!</h2></a>
     }
     else
