@@ -11,24 +11,5 @@
 </div>
 
 <script>
-	var answers = @Html.Raw(jsonString);
-	var speedAnswerInput = document.getElementById('speed-answer');
-	var startGameBtn = document.getElementById('start-game');
-	
-	speedAnswerInput.addEventListener('keyup', function () {
-		var answer = this.value;
-		if (answers.includes(answer.toLowerCase())) {
-			alert('Correctomundo!!!!'); // TODO: Display some kind of message indicating correct answer
-			this.value = "";
-			var index = answers.indexOf(answer);
-			if (index > -1) {
-				answers.splice(index, 1);
-			}
-		}
-	});
-
-	startGameBtn.addEventListener('click', function () {
-		speedAnswerInput.style.display = 'block';
-		this.style.display = 'none';
-	});
+	window.answers = @Html.Raw(jsonString);
 </script>
