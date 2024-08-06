@@ -15,7 +15,12 @@
 	document.getElementById('speed-answer').addEventListener('keyup', function () {
 		var answer = this.value;
 		if (answers.includes(answer.toLowerCase())) {
-			alert('Correctomundo!!!!')
+			alert('Correctomundo!!!!');
+			this.value = "";
+			var index = answers.indexOf(answer);
+			if (index > -1) {
+				answers.splice(index, 1);
+			}
 		}
 	});
 </script>
