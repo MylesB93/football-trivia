@@ -34,3 +34,7 @@ body {
     margin-top: 1%;
     font-weight: bold;
 }
+
+#speed-answer {
+    display: none;
+}
