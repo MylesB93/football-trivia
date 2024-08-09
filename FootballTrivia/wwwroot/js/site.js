@@ -71,6 +71,7 @@ speedAnswerInput.addEventListener('keyup', function () {
 startGameBtn.addEventListener('click', function () {
 	speedAnswerInput.style.display = 'block';
 	this.style.display = 'none';
+	gameTimer();
 });
 
 function startCountdown() {
@@ -82,5 +83,20 @@ function startCountdown() {
 			clearInterval(countdownInterval);
 			correctCountdown.style.display = 'none';
 		}
+	}, 1000)
+}
+
+function gameTimer() {
+	var timeRemaining = 60;
+	var countdownElement = document.getElementById('countdownDisplay');
+
+	var gameInterval = setInterval(function () {
+		timeRemaining--;
+		countdownElement.textContent = 'Time remaining: ' + timeRemaining + ' seconds';
+
+		if (timeRemaining <= 0) {
+            clearInterval(gameInterval);
+			countdownElement.textContent = "Time's up!";
+        }
 	}, 1000)
 }
