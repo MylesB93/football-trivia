@@ -38,3 +38,8 @@ body {
 #speed-answer {
     display: none;
 }
+
+.correct-answer {
+    display: none;
+    color: green;
+}
