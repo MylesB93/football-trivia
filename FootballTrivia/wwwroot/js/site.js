@@ -52,11 +52,13 @@ var speedAnswerInput = document.getElementById('speed-answer');
 var startGameBtn = document.getElementById('start-game');
 var answers = window.answers;
 var points = 0;
+var correctCountdown = document.getElementById('correct-countdown');
 
 speedAnswerInput.addEventListener('keyup', function () {
 	var answer = this.value;
 	if (answers.includes(answer.toLowerCase())) {
-		alert('Correctomundo!!!!'); // TODO: Display some kind of message indicating correct answer
+		correctCountdown.style.display = 'block';
+		startCountdown();
 		this.value = "";
 		var index = answers.indexOf(answer);
 		if (index > -1) {
@@ -70,3 +72,15 @@ startGameBtn.addEventListener('click', function () {
 	speedAnswerInput.style.display = 'block';
 	this.style.display = 'none';
 });
+
+function startCountdown() {
+	var countdownTime = 1;
+	var countdownInterval = setInterval(function () {
+		countdownTime--;
+
+		if (countdownTime <= 0) {
+			clearInterval(countdownInterval);
+			correctCountdown.style.display = 'none';
+		}
+	}, 1000)
+}
