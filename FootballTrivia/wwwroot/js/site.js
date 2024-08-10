@@ -53,6 +53,7 @@ var startGameBtn = document.getElementById('start-game');
 var answers = window.answers;
 var points = 0;
 var correctCountdown = document.getElementById('correct-countdown');
+var countdownElement = document.getElementById('countdownDisplay');
 
 speedAnswerInput.addEventListener('keyup', function () {
 	var answer = this.value;
@@ -72,6 +73,7 @@ startGameBtn.addEventListener('click', function () {
 	speedAnswerInput.style.display = 'block';
 	this.style.display = 'none';
 	gameTimer();
+	countdownElement.style.display = 'block';
 });
 
 function startCountdown() {
@@ -88,7 +90,6 @@ function startCountdown() {
 
 function gameTimer() {
 	var timeRemaining = 60;
-	var countdownElement = document.getElementById('countdownDisplay');
 
 	var gameInterval = setInterval(function () {
 		timeRemaining--;
