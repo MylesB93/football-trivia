@@ -55,54 +55,64 @@ var points = 0;
 var correctCountdown = document.getElementById('correct-countdown');
 var countdownElement = document.getElementById('countdownDisplay');
 var pointsElement = document.getElementById('points');
+var gameInterval;
 
 speedAnswerInput.addEventListener('keyup', function () {
-	var answer = this.value;
-	if (answers.includes(answer.toLowerCase())) {
-		correctCountdown.style.display = 'block';
-		startCountdown();
-		this.value = "";
-		var index = answers.indexOf(answer);
-		points++;
-		pointsElement.textContent ='Points: ' + points;
-		if (index > -1) {
-			answers.splice(index, 1);
-			console.log(answers);
-		}
-	}
+    var answer = this.value;
+    if (answers.includes(answer.toLowerCase())) {
+        correctCountdown.style.display = 'block';
+        startCountdown();
+        this.value = "";
+        var index = answers.indexOf(answer);
+        points++;
+        pointsElement.textContent = 'Points: ' + points;
+        if (index > -1) {
+            answers.splice(index, 1);
+            console.log(answers);
+        }
+        if (answers.length === 0) {
+            gameWon();
+        }
+    }
 });
 
 startGameBtn.addEventListener('click', function () {
-	speedAnswerInput.style.display = 'block';
-	this.style.display = 'none';
-	gameTimer();
-	countdownElement.style.display = 'block';
-	pointsElement.style.display = 'block';
+    speedAnswerInput.style.display = 'block';
+    this.style.display = 'none';
+    gameTimer();
+    countdownElement.style.display = 'block';
+    pointsElement.style.display = 'block';
 });
 
 function startCountdown() {
-	var countdownTime = 1;
-	var countdownInterval = setInterval(function () {
-		countdownTime--;
+    var countdownTime = 1;
+    var countdownInterval = setInterval(function () {
+        countdownTime--;
 
-		if (countdownTime <= 0) {
-			clearInterval(countdownInterval);
-			correctCountdown.style.display = 'none';
-		}
-	}, 1000)
+        if (countdownTime <= 0) {
+            clearInterval(countdownInterval);
+            correctCountdown.style.display = 'none';
+        }
+    }, 1000)
 }
 
 function gameTimer() {
-	var timeRemaining = 60;
+    var timeRemaining = 60;
 
-	var gameInterval = setInterval(function () {
-		timeRemaining--;
-		countdownElement.textContent = 'Time remaining: ' + timeRemaining + ' seconds';
+    gameInterval = setInterval(function () {
+        timeRemaining--;
+        countdownElement.textContent = 'Time remaining: ' + timeRemaining + ' seconds';
 
-		if (timeRemaining <= 0) {
+        if (timeRemaining <= 0) {
             clearInterval(gameInterval);
-			countdownElement.textContent = "Time's up!";
-			speedAnswerInput.disabled = true;
+            countdownElement.textContent = "Time's up!";
+            speedAnswerInput.disabled = true;
         }
-	}, 1000)
+    }, 1000)
+}
+
+function gameWon() {
+    clearInterval(gameInterval);
+    countdownElement.textContent = 'You win!';
+    speedAnswerInput.disabled = true;
 }
