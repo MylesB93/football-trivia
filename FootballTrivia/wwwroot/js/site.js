@@ -54,6 +54,7 @@ var answers = window.answers;
 var points = 0;
 var correctCountdown = document.getElementById('correct-countdown');
 var countdownElement = document.getElementById('countdownDisplay');
+var pointsElement = document.getElementById('points');
 
 speedAnswerInput.addEventListener('keyup', function () {
 	var answer = this.value;
@@ -62,9 +63,11 @@ speedAnswerInput.addEventListener('keyup', function () {
 		startCountdown();
 		this.value = "";
 		var index = answers.indexOf(answer);
+		points++;
+		pointsElement.textContent ='Points: ' + points;
 		if (index > -1) {
 			answers.splice(index, 1);
-			console.log(answers)
+			console.log(answers);
 		}
 	}
 });
@@ -74,6 +77,7 @@ startGameBtn.addEventListener('click', function () {
 	this.style.display = 'none';
 	gameTimer();
 	countdownElement.style.display = 'block';
+	pointsElement.style.display = 'block';
 });
 
 function startCountdown() {

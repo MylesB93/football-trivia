@@ -1,7 +1,6 @@
 ﻿@page
 @model FootballTrivia.Areas.SpeedRound.Pages.IndexModel
 @{
-	var points = 0;
 	var jsonString = JsonSerializer.Serialize(Model.Standings?.Select(s => s.ToLower()));
 }
 
@@ -9,7 +8,8 @@
 	<button type="button" id="start-game" class="btn btn-success">Start!</button>
 	<input type="text" id="speed-answer" name="answer">
 	<h3 class="correct-answer" id="correct-countdown">Correct!</h3>
-	<div id="countdownDisplay">Time remaining: 60 seconds</div> <!--TODO: Figure out why this isn't displaying-->
+	<div id="countdownDisplay">Time remaining: 60 seconds</div>
+	<p id="points">Points: 0</p>
 </div>
 
 <script>

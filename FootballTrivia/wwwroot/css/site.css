@@ -47,3 +47,7 @@ body {
 #countdownDisplay {
     display: none;
 }
+
+#points {
+    display: none;
+}
