@@ -33,9 +33,9 @@ namespace FootballTrivia.Services
 			};
 		}
 
-		public async Task<List<string>?> GetSpeedRoundQuestionsAsync(string season = "2023")
+		public async Task<List<string>?> GetSpeedRoundQuestionsAsync(string season = "2023", string league = "39")
 		{
-            var response = await _httpClient.GetAsync($"/v3/standings?league=39&season={season}");
+            var response = await _httpClient.GetAsync($"/v3/standings?league={league}&season={season}");
             var content = await response.Content.ReadAsStringAsync();
             var standings = JsonConvert.DeserializeObject<Rootobject>(content)?.Response?.FirstOrDefault()?.League?.Standings?.FirstOrDefault()?.Select(s => s.Team.Name).ToList();
 

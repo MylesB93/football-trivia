@@ -5,6 +5,6 @@ namespace FootballTrivia.Interfaces
 	public interface IQuizService
 	{
 		Task<Dictionary<string, string[]>> GetQuizQuestionsAsync(string season = "2023");
-		Task<List<string>?> GetSpeedRoundQuestionsAsync(string season = "2023");
+		Task<List<string>?> GetSpeedRoundQuestionsAsync(string season = "2023", string league = "39");
     }
 }
