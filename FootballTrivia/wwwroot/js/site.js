@@ -102,6 +102,7 @@ function gameTimer() {
 		if (timeRemaining <= 0) {
             clearInterval(gameInterval);
 			countdownElement.textContent = "Time's up!";
+			speedAnswerInput.disabled = true;
         }
 	}, 1000)
 }
