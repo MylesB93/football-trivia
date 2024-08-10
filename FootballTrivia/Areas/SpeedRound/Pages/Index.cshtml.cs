@@ -16,6 +16,11 @@ namespace FootballTrivia.Areas.SpeedRound.Pages
             _quizService = quizService;
         }
 
+        public async Task OnPostAsync(string league)
+        {
+            // Implement this
+        }
+
         public async Task OnGetAsync()
         {
             Standings = await _quizService.GetSpeedRoundQuestionsAsync();

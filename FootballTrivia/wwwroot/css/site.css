@@ -51,3 +51,7 @@ body {
 #points {
     display: none;
 }
+
+#speed-round-container {
+    display: none;
+}

@@ -4,7 +4,14 @@
 	var jsonString = JsonSerializer.Serialize(Model.Standings?.Select(s => s.ToLower()));
 }
 
+<!--TODO: Implement league selection logic-->
 <div>
+	<h3>Select a league: </h3>
+	<button class="btn btn-info" data-league-id="39" onclick="">English Premier League</button>
+</div>
+
+
+<div id="speed-round-container">
 	<button type="button" id="start-game" class="btn btn-success">Start!</button>
 	<input type="text" id="speed-answer" name="answer">
 	<h3 class="correct-answer" id="correct-countdown">Correct!</h3>
