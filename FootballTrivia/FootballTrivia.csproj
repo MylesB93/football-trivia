@@ -25,4 +25,12 @@
     <PackageReference Include="SendGrid" Version="9.29.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\SpeedRound\Pages\GameSetup.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\SpeedRound\Pages\GameSetup.cshtml" />
+  </ItemGroup>
+
 </Project>

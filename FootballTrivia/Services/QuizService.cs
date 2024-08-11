@@ -33,7 +33,7 @@ namespace FootballTrivia.Services
 			};
 		}
 
-		public async Task<List<string>?> GetSpeedRoundQuestionsAsync(string season = "2023", string league = "39")
+		public async Task<List<string>?> GetSpeedRoundQuestionsAsync(string league, string season = "2023")
 		{
             var response = await _httpClient.GetAsync($"/v3/standings?league={league}&season={season}");
             var content = await response.Content.ReadAsStringAsync();
