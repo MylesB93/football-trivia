@@ -1,7 +1,18 @@
 ﻿@page
 @model FootballTrivia.Areas.SpeedRound.Pages.GameSetupModel
 @{
+	var latestYear = DateTime.Now.Year - 1;
+	var startYear = 2000;
+	List<int> years = Enumerable.Range(2000, latestYear - startYear + 1).ToList();
 }
+
+<!--TODO: Disable league selection until player selects a year-->
+<ul>
+	@foreach (var year in years)
+	{
+		<li>@year</li>
+	}
+</ul>
 
 <div>
 	<a asp-area="SpeedRound" asp-page="/Index" asp-route-lid="39" class="begin-quiz-link"><h2>English Premier League</h2></a>
