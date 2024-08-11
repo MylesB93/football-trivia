@@ -1,7 +1,7 @@
 ﻿@page
 @model FootballTrivia.Areas.SpeedRound.Pages.IndexModel
 @{
-	var jsonString = JsonSerializer.Serialize(Model.Standings?.Select(s => s.ToLower()));
+	var jsonString = JsonSerializer.Serialize(Model.Standings?.Select(s => s.ToLower().Replace("utd","united")));
 }
 
 <div id="speed-round-container">
