@@ -7,12 +7,17 @@
 }
 
 <!--TODO: Disable league selection until player selects a year-->
-<ul>
-	@foreach (var year in years)
-	{
-		<li>@year</li>
-	}
-</ul>
+<div class="dropdown">
+	<button id="js-dropdown-btn" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+		Dropdown button
+	</button>
+	<ul class="dropdown-menu" id="js-year-dropdown">
+		@foreach (var year in years)
+		{
+			<li><a class="dropdown-item" href="#" onclick="getYear(this)">@year</a></li>
+		}
+	</ul>
+</div>
 
 <div>
 	<a asp-area="SpeedRound" asp-page="/Index" asp-route-lid="39" class="begin-quiz-link"><h2>English Premier League</h2></a>

@@ -57,32 +57,36 @@ var countdownElement = document.getElementById('countdownDisplay');
 var pointsElement = document.getElementById('points');
 var gameInterval;
 
-speedAnswerInput.addEventListener('keyup', function () {
-    var answer = this.value;
-    if (answers.includes(answer.toLowerCase())) {
-        correctCountdown.style.display = 'block';
-        startCountdown();
-        this.value = "";
-        var index = answers.indexOf(answer);
-        points++;
-        pointsElement.textContent = 'Points: ' + points;
-        if (index > -1) {
-            answers.splice(index, 1);
-            console.log(answers);
+if (speedAnswerInput !== null) {
+    speedAnswerInput.addEventListener('keyup', function () {
+        var answer = this.value;
+        if (answers.includes(answer.toLowerCase())) {
+            correctCountdown.style.display = 'block';
+            startCountdown();
+            this.value = "";
+            var index = answers.indexOf(answer);
+            points++;
+            pointsElement.textContent = 'Points: ' + points;
+            if (index > -1) {
+                answers.splice(index, 1);
+                console.log(answers);
+            }
+            if (answers.length === 0) {
+                gameWon();
+            }
         }
-        if (answers.length === 0) {
-            gameWon();
-        }
-    }
-});
+    });
+}
 
-startGameBtn.addEventListener('click', function () {
-    speedAnswerInput.style.display = 'block';
-    this.style.display = 'none';
-    gameTimer();
-    countdownElement.style.display = 'block';
-    pointsElement.style.display = 'block';
-});
+if (startGameBtn !== null) {
+    startGameBtn.addEventListener('click', function () {
+        speedAnswerInput.style.display = 'block';
+        this.style.display = 'none';
+        gameTimer();
+        countdownElement.style.display = 'block';
+        pointsElement.style.display = 'block';
+    });
+}
 
 function startCountdown() {
     var countdownTime = 1;
@@ -115,4 +119,11 @@ function gameWon() {
     clearInterval(gameInterval);
     countdownElement.textContent = 'You win!';
     speedAnswerInput.disabled = true;
+}
+
+var quizLinks = document.querySelectorAll('.begin-quiz-link');
+function getYear(element) {
+    quizLinks.forEach(function (e) {
+        e.setAttribute('asp-route-year', element.textContent); //TODO: append year to href rather than creating new attribute
+    });
 }
