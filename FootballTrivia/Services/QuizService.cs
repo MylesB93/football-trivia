@@ -18,9 +18,9 @@ namespace FootballTrivia.Services
             _httpClient = _httpClientFactory.CreateClient("FootballData");
         }
 
-		public async Task<Dictionary<string, string[]>> GetQuizQuestionsAsync(string season = "2023")
+		public async Task<Dictionary<string, string[]>> GetQuizQuestionsAsync(string year = "2023")
 		{
-			var response = await _httpClient.GetAsync($"/v3/standings?league=39&season={season}");
+			var response = await _httpClient.GetAsync($"/v3/standings?league=39&season={year}");
 			var content = await response.Content.ReadAsStringAsync();
 			var standings = JsonConvert.DeserializeObject<Rootobject>(content)?.Response?.FirstOrDefault()?.League?.Standings;
 
@@ -33,9 +33,9 @@ namespace FootballTrivia.Services
 			};
 		}
 
-		public async Task<List<string>?> GetSpeedRoundQuestionsAsync(string league, string season = "2023")
+		public async Task<List<string>?> GetSpeedRoundQuestionsAsync(string league, string year = "2023")
 		{
-            var response = await _httpClient.GetAsync($"/v3/standings?league={league}&season={season}");
+            var response = await _httpClient.GetAsync($"/v3/standings?league={league}&season={year}");
             var content = await response.Content.ReadAsStringAsync();
             var standings = JsonConvert.DeserializeObject<Rootobject>(content)?.Response?.FirstOrDefault()?.League?.Standings?.FirstOrDefault()?.Select(s => s.Team.Name).ToList();
 

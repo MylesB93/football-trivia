@@ -16,9 +16,9 @@ namespace FootballTrivia.Areas.SpeedRound.Pages
             _quizService = quizService;
         }
 
-        public async Task OnGetAsync(string lid)
+        public async Task OnGetAsync(string lid, string year)
         {
-            Standings = await _quizService.GetSpeedRoundQuestionsAsync(league: lid);
+            Standings = await _quizService.GetSpeedRoundQuestionsAsync(lid, year);
         }
     }
 }

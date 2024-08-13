@@ -124,6 +124,12 @@ function gameWon() {
 var quizLinks = document.querySelectorAll('.begin-quiz-link');
 function getYear(element) {
     quizLinks.forEach(function (e) {
-        e.setAttribute('asp-route-year', element.textContent); //TODO: append year to href rather than creating new attribute
+        var leagueId = e.getAttribute('data-league-id');
+        var year = element.textContent;
+        var link = e.getAttribute('href');
+        var url = new URL(link, window.location.origin);
+        url.searchParams.append('lid', leagueId);
+        url.searchParams.append('year', year);
+        e.href = url.toString();
     });
 }
