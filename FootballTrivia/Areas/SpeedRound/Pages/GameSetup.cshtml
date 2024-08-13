@@ -6,7 +6,6 @@
 	List<int> years = Enumerable.Range(startYear, latestYear - startYear + 1).ToList();
 }
 
-<!--TODO: Disable league selection until player selects a year-->
 <div class="dropdown">
 	<button id="js-dropdown-btn" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 		2023
@@ -20,6 +19,6 @@
 </div>
 
 <div>
-	<a asp-area="SpeedRound" asp-page="/Index" data-league-id="39" class="begin-quiz-link"><h2>English Premier League</h2></a>
-	<a asp-area="SpeedRound" asp-page="/Index" data-league-id="61" class="begin-quiz-link"><h2>Ligue 1</h2></a>
+	<a asp-area="SpeedRound" asp-page="/Index" asp-route-lid="39" class="begin-quiz-link"><h2>English Premier League</h2></a>
+	<a asp-area="SpeedRound" asp-page="/Index" asp-route-lid="61" class="begin-quiz-link"><h2>Ligue 1</h2></a>
 </div>

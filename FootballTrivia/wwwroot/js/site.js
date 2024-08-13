@@ -126,12 +126,8 @@ var dropdownBtn = document.getElementById('js-dropdown-btn');
 function getYear(element) {
     dropdownBtn.textContent = element.textContent;
     quizLinks.forEach(function (e) {
-        var leagueId = e.getAttribute('data-league-id');
         var year = element.textContent;
-        var link = e.getAttribute('href');
-        var url = new URL(link, window.location.origin);
-        url.searchParams.append('lid', leagueId);
-        url.searchParams.append('year', year);
-        e.href = url.toString();
+        var queryString = '&year=' + year;
+        e.href += queryString;
     });
 }
