@@ -18,7 +18,7 @@ namespace FootballTrivia.Services
             _httpClient = _httpClientFactory.CreateClient("FootballData");
         }
 
-		public async Task<Dictionary<string, string[]>> GetQuizQuestionsAsync(string year = "2023")
+		public async Task<Dictionary<string, string[]>> GetQuizQuestionsAsync(string year)
 		{
 			var response = await _httpClient.GetAsync($"/v3/standings?league=39&season={year}");
 			var content = await response.Content.ReadAsStringAsync();
@@ -33,7 +33,7 @@ namespace FootballTrivia.Services
 			};
 		}
 
-		public async Task<List<string>?> GetSpeedRoundQuestionsAsync(string league, string year = "2023")
+		public async Task<List<string>?> GetSpeedRoundQuestionsAsync(string league, string year)
 		{
             var response = await _httpClient.GetAsync($"/v3/standings?league={league}&season={year}");
             var content = await response.Content.ReadAsStringAsync();

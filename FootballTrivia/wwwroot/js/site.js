@@ -122,7 +122,9 @@ function gameWon() {
 }
 
 var quizLinks = document.querySelectorAll('.begin-quiz-link');
+var dropdownBtn = document.getElementById('js-dropdown-btn');
 function getYear(element) {
+    dropdownBtn.textContent = element.textContent;
     quizLinks.forEach(function (e) {
         var leagueId = e.getAttribute('data-league-id');
         var year = element.textContent;
