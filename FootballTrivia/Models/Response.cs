@@ -2,6 +2,6 @@
 {
 	public class Response
 	{
-		public League League { get; set; }
+		public League? League { get; set; }
 	}
 }
