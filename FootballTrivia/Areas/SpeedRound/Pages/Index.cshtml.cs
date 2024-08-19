@@ -21,7 +21,7 @@ namespace FootballTrivia.Areas.SpeedRound.Pages
 
 		public async Task OnGetAsync(string lid, string year = "2023")
 		{
-			Standings = await _quizService.GetSpeedRoundQuestionsAsync(lid, year); //TODO: Figure out why warning is being thrown here
+			Standings = await _quizService.GetSpeedRoundQuestionsAsync(lid, year); //TODO: Figure out why warning is being thrown here 
 
 			if (User?.Identity?.Name != null)
 				HighScore = _userService.GetHighScore(User.Identity.Name);
