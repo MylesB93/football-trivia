@@ -33,6 +33,7 @@ namespace FootballTrivia
             builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 			builder.Services.AddScoped<IQuizService, QuizService>();
+			builder.Services.AddScoped<IUserService, UserService>();
 
 			builder.Services.AddHttpClient("FootballData", httpClient =>
 			{

@@ -9,5 +9,6 @@ namespace FootballTrivia.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the FootballTriviaUser class
 public class FootballTriviaUser : IdentityUser
 {
+	public int HighScore { get; set; } = 0;
 }
 

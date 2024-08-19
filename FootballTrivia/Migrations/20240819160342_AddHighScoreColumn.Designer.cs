@@ -4,6 +4,7 @@ using FootballTrivia.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootballTrivia.Migrations
 {
     [DbContext(typeof(FootballTriviaContext))]
-    partial class FootballTriviaContextModelSnapshot : ModelSnapshot
+    [Migration("20240819160342_AddHighScoreColumn")]
+    partial class AddHighScoreColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
