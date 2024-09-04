@@ -63,6 +63,16 @@ namespace FootballTrivia
 
 			app.MapRazorPages();
 
+			app.MapPatch("/UpdateScore", async (FootballTriviaContext db, string username, int score) =>
+			{
+				var user = await db.Users.Where(u => u.UserName == username).FirstOrDefaultAsync();
+				if (user != null)
+				{
+					user.HighScore = score;
+					await db.SaveChangesAsync();
+				}
+			});
+
 			app.Run();
 		}
 	}

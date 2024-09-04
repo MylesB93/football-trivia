@@ -137,6 +137,9 @@ function getYear(element) {
 function checkScore() {
     var highScore = document.getElementById('high-score');
     if (highScore > points) {
-        // Add API call here
+        var apiUrl = `/UpdateScore?username=${window.username}&score=${highScore}`;
     }
 }
+
+//TODO: Figure out why this is undefined
+console.log('USER: ' + window.username);
