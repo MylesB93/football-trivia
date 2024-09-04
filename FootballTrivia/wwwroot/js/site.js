@@ -111,6 +111,7 @@ function gameTimer() {
             clearInterval(gameInterval);
             countdownElement.textContent = "Time's up!";
             speedAnswerInput.disabled = true;
+            checkScore();
         }
     }, 1000)
 }
@@ -119,6 +120,7 @@ function gameWon() {
     clearInterval(gameInterval);
     countdownElement.textContent = 'You win!';
     speedAnswerInput.disabled = true;
+    checkScore();
 }
 
 var quizLinks = document.querySelectorAll('.begin-quiz-link');
@@ -130,4 +132,11 @@ function getYear(element) {
         var queryString = '&year=' + year;
         e.href += queryString;
     });
+}
+
+function checkScore() {
+    var highScore = document.getElementById('high-score');
+    if (highScore > points) {
+        // Add API call here
+    }
 }
