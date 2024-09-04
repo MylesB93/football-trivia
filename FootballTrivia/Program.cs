@@ -5,6 +5,7 @@ using FootballTrivia.Email;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using FootballTrivia.Interfaces;
 using FootballTrivia.Services;
+using FootballTrivia.Repositories;
 
 namespace FootballTrivia
 {
@@ -34,6 +35,7 @@ namespace FootballTrivia
 
 			builder.Services.AddScoped<IQuizService, QuizService>();
 			builder.Services.AddScoped<IUserService, UserService>();
+			builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 			builder.Services.AddHttpClient("FootballData", httpClient =>
 			{
