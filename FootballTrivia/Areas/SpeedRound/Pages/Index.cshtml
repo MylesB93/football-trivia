@@ -18,5 +18,5 @@
 
 <script>
 	window.answers = @Html.Raw(jsonString);
-	window.username = @Model.User.Identity?.Name;
+	window.username = '@Model.User.Identity?.Name';
 </script>
