@@ -135,11 +135,18 @@ function getYear(element) {
 }
 
 function checkScore() {
-    var highScore = document.getElementById('high-score');
-    if (highScore > points) {
+    var highScore = Number(document.getElementById('high-score').innerHTML);
+    if (points > highScore) {
         var apiUrl = `/UpdateScore?username=${window.username}&score=${highScore}`;
+        fetch(apiUrl, {
+            method: 'PATCH'
+        }).then(response => {
+            if (response.ok()) { //TODO: Figure out why error is being thrown
+                console.log('SUCCESS!');
+            }
+            else {
+                console.log('FAILURE!');
+            }
+    });
     }
 }
-
-//TODO: Figure out why this is undefined
-console.log('USER: ' + window.username);
