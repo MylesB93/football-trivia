@@ -137,11 +137,11 @@ function getYear(element) {
 function checkScore() {
     var highScore = Number(document.getElementById('high-score').innerHTML);
     if (points > highScore) {
-        var apiUrl = `/UpdateScore?username=${window.username}&score=${highScore}`;
+        var apiUrl = `/UpdateScore?username=${window.username}&score=${points}`;
         fetch(apiUrl, {
             method: 'PATCH'
         }).then(response => {
-            if (response.ok()) { //TODO: Figure out why error is being thrown
+            if (response.ok) {
                 console.log('SUCCESS!');
             }
             else {
