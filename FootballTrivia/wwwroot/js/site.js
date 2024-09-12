@@ -56,6 +56,7 @@ var correctCountdown = document.getElementById('correct-countdown');
 var countdownElement = document.getElementById('countdownDisplay');
 var pointsElement = document.getElementById('points');
 var gameInterval;
+var highScoreElement = document.getElementById('high-score');
 
 if (speedAnswerInput !== null) {
     speedAnswerInput.addEventListener('keyup', function () {
@@ -129,7 +130,7 @@ function getYear(element) {
 }
 
 function checkScore() {
-    var highScore = Number(document.getElementById('high-score').innerHTML);
+    var highScore = Number(highScoreElement.innerHTML);
     if (points > highScore) {
         var apiUrl = `/UpdateScore?username=${window.username}&score=${points}`;
         fetch(apiUrl, {
@@ -143,7 +144,7 @@ function checkScore() {
             }
         });
 
-        document.getElementById('high-score').textContent = points;
+        highScoreElement.textContent = points;
     }
 }
 
