@@ -141,7 +141,9 @@ function checkScore() {
             else {
                 console.log('FAILURE!');
             }
-    });
+        });
+
+        document.getElementById('high-score').textContent = points;
     }
 }
 
