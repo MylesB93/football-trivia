@@ -108,19 +108,13 @@ function gameTimer() {
         countdownElement.textContent = 'Time remaining: ' + timeRemaining + ' seconds';
 
         if (timeRemaining <= 0) {
-            clearInterval(gameInterval);
-            countdownElement.textContent = "Time's up!";
-            speedAnswerInput.disabled = true;
-            checkScore();
+            finishGame("Time's up!");
         }
     }, 1000)
 }
 
 function gameWon() {
-    clearInterval(gameInterval);
-    countdownElement.textContent = 'You win!';
-    speedAnswerInput.disabled = true;
-    checkScore();
+    finishGame('You win!');
 }
 
 var quizLinks = document.querySelectorAll('.begin-quiz-link');
@@ -149,4 +143,11 @@ function checkScore() {
             }
     });
     }
+}
+
+function finishGame(text) {
+    clearInterval(gameInterval);
+    countdownElement.textContent = text;
+    speedAnswerInput.disabled = true;
+    checkScore();
 }
