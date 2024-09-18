@@ -52,6 +52,7 @@ var speedAnswerInput = document.getElementById('speed-answer');
 var startGameBtn = document.getElementById('start-game');
 var restartGameBtn = document.getElementById('restart-game');
 var answers = window.answers;
+var completeAnswers = answers.slice(); //create a shallow copy of the answers array
 var points = 0;
 var correctCountdown = document.getElementById('correct-countdown');
 var countdownElement = document.getElementById('countdownDisplay');
@@ -93,8 +94,11 @@ if (startGameBtn !== null) {
 if (restartGameBtn !== null) {
     restartGameBtn.addEventListener('click', function () {
         points = 0;
+        pointsElement.textContent = 'Points: ' + points;
         speedAnswerInput.disabled = false;
         gameTimer();
+        answers = completeAnswers.slice();
+        restartGameBtn.style.display = 'none';
     });    
 }
 
