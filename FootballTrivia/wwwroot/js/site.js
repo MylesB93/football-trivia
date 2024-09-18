@@ -111,7 +111,7 @@ function startCountdown() {
 }
 
 function gameTimer() {
-    var timeRemaining = 10;
+    var timeRemaining = 60;
 
     gameInterval = setInterval(function () {
         timeRemaining--;
